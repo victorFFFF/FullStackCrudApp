@@ -14,26 +14,25 @@ try{
     }
 });
 
+router.get("/:id", async (req, res, next) => {
+    // take the id from params
+    const { id } = req.params;
+    // query the database for a campus with matching id
+    try {
+      // if successful:
+      const student = await Student.findByPk(id,{include:Campus});
+ 
+
+      // send back the campus as a response
+      res.status(200).json([student]);
+    } catch (err) {
+      // if error:
+      // handle error
+      next(err);
+    }
+  });
 
 
-// Route to handle adding a campus
-// /api/campuses/
-// router.post("/allstudents", async (req, res, next) => {
-//     // Take the form data from the request body
-//     const { firstName } = req.body;
-//     // Create a campus object
-//     const studentObj = {
-//       firstName: firstName,
-//     };
-//     try {
-//       // Create a new campus on the database
-//       const newStudent = await Student.create(studentObj);
-//       // The database would return a campus
-//       // send that campus as a json to the client
-//       res.status(201).send(newStudent);
-//     } catch (err) {
-//       next(err);
-//     }
-//   });
+
 
 module.exports = router;

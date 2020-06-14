@@ -4,15 +4,16 @@ import { Link } from "react-router-dom";
 
 
 const AllStudentView = (props) => {
-//   if (!props.allCampuses.length) {
-//     return <div className="all-campuses">There are no campuses</div>;
-//   }
+  if (!props.allStudent.length) {
+    return <div>There are no students enrolled.</div>;
+  }
 
 console.log("STUDENT VIEW ")
 
 
   return (
     <div>
+        <button >Add Student</button>
       <h1>All Students</h1>
       {/* <h2>{props.allStudent}X</h2> */}
       {props.allStudent.map((x) => (
@@ -20,7 +21,7 @@ console.log("STUDENT VIEW ")
           <div style={{border: '2px solid black' }}>
             <img src={x.imageUrl} width='300px'></img>
             <br></br>
-            <Link >{x.firstName}</Link>
+            <Link to={`/students/${x.id}`}>{x.firstName}</Link>
             <br></br>
             <Link to={`/campuses/${x.campus.id}`}>{x.campus.name}</Link>
             {/* <p>{x.campus.name}</p> */}
