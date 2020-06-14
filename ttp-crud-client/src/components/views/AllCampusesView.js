@@ -7,6 +7,7 @@ const AllCampusesView = (props) => {
   if (!props.allCampuses.length) {
     return <div className="all-campuses">There are no campuses</div>;
   }
+  //  console.log("LOL "+ props.allCampuses[0].students[0].firstName)
 
   return (
     <div className="all-campuses">
@@ -15,7 +16,7 @@ const AllCampusesView = (props) => {
           <Link to={`/campuses/${campus.id}`}>
             <h1>{campus.name}</h1>
           </Link>
-          <img src={campus.imageUrl} width="200px" alt={campus.name} />
+          <img src={campus.imageUrl} width="300px" alt={campus.name} />
           <p>{campus.students.length} students</p>
           <button onClick={() => props.handleDelete(campus.id)}>Delete</button>
         </div>

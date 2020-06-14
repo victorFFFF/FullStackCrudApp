@@ -6,11 +6,13 @@ const { Campus, Student } = require("../database/models");
 // /api/campuses
 router.get("/", async (req, res, next) => {
   // try to get campuses object from database
+  console.log("campuses router called")
+  
   try {
     // campuses will be the result of the Campus.findAll promise
     const campuses = await Campus.findAll({ include: Student });
     // if campuses is valid, it will be sent as a json response
-    console.log(campuses);
+ 
     res.status(200).json(campuses);
   } catch (err) {
     // if there is an error, it'll passed via the next parameter to the error handler middleware
@@ -27,7 +29,7 @@ router.get("/:id", async (req, res, next) => {
   // query the database for a campus with matching id
   try {
     // if successful:
-    const campus = await Campus.findByPk(id);
+    const campus = await Campus.findByPk(id, { include: Student });
     // send back the campus as a response
     res.status(200).json(campus);
   } catch (err) {
@@ -103,13 +105,13 @@ router.put("/:id", async (req, res, next) => {
     // Find a campus with a matching id from the database
     const campus = await Campus.findByPk(id);
     // database would return a valid campus object or an error
-    console.log(updatedObj);
+    // console.log(updatedObj);
     // modify the campus object with new form data
     await campus.set(updatedObj);
     // save the new campus object to the data
     // database would return a new campus object
     const updatedCampus = await campus.save();
-    console.log(updatedCampus);
+    // console.log(updatedCampus);
     // send the newCampus as a response from the API
     res.status(201).send(updatedCampus);
   } catch (err) {

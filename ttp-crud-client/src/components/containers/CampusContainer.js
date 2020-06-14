@@ -10,6 +10,7 @@ class CampusContainer extends Component {
   // }
 
   componentDidMount() {
+    console.log("single campus mount")
     this.props.fetchCampus(this.props.match.params.id);
   }
 
@@ -20,12 +21,14 @@ class CampusContainer extends Component {
 
 // map state to props
 const mapState = (state) => {
+  console.log("single campus mapstate")
   return {
     campus: state.campus,
   };
 };
 
 const mapDispatch = (dispatch) => {
+  console.log("single campus dispatch")
   return {
     fetchCampus: (id) => dispatch(fetchCampusThunk(id)),
   };

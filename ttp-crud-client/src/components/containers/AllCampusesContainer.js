@@ -15,6 +15,7 @@ class AllCampusesContainer extends Component {
   };
 
   render() {
+    // console.log("HERE  " + this.props.allCampuses.length)
     return (
       <AllCampusesView
         allCampuses={this.props.allCampuses}
@@ -27,6 +28,7 @@ class AllCampusesContainer extends Component {
 
 // Map state to props;
 const mapState = (state) => {
+  // console.log("STATECAMPUS" + state.allCampuses[0]);
   return {
     hello: "hello world!!!",
     allCampuses: state.allCampuses,

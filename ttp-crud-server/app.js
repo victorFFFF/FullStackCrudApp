@@ -58,6 +58,7 @@ const configureApp = () => {
 
   // Mount our apiRouter
   app.use("/api", apiRouter);
+  // app.use("/students", apiRouter)
 
   // Error handling;
   app.use((req, res, next) => {
