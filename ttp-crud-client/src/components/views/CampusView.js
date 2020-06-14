@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CampusView = (props) => {
   let studentDisplay;
@@ -7,7 +8,12 @@ const CampusView = (props) => {
       <div>
         <p>{props.campus.students.length} Students</p>
         {props.campus.students.map((student) => (
-          <div key={student.id}>{student.firstName}</div>
+          <div>
+          <div key={student.id}>
+           <Link to={`/students/${student.id}`}> {student.firstName}</Link>
+          </div>
+          </div>
+       
         ))}
       </div>
     );
@@ -20,7 +26,6 @@ const CampusView = (props) => {
       <img src={props.campus.imageUrl} alt={props.campus.name} />
       <h1>{props.campus.name}</h1>
       <h3>{props.campus.address}</h3>
-
       <p>{props.campus.description}</p>
       {studentDisplay}
     </>

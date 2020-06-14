@@ -22,7 +22,7 @@ export const fetchCampusThunk = (id) => (dispatch) => {
 };
 
 // Reducer
-const reducer = (state = {}, action) => {
+const reducer = (state = [], action) => {
   switch (action.type) {
     case FETCH_CAMPUS:
       return action.payload;

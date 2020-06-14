@@ -13,7 +13,6 @@ console.log("STUDENT VIEW ")
 
   return (
     <div>
-        <button >Add Student</button>
       <h1>All Students</h1>
       {/* <h2>{props.allStudent}X</h2> */}
       {props.allStudent.map((x) => (
