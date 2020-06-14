@@ -2,11 +2,14 @@ import React from "react";
 import "./styles/AllCampusesView.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { campus } from "../../reducers";
 
 const AllCampusesView = (props) => {
   if (!props.allCampuses.length) {
     return <div className="all-campuses">There are no campuses</div>;
   }
+
+ 
   //  console.log("LOL "+ props.allCampuses[0].students[0].firstName)
 
   return (
@@ -18,6 +21,7 @@ const AllCampusesView = (props) => {
           </Link>
           <img src={campus.imageUrl} width="300px" alt={campus.name} />
           <p>{campus.students.length} students</p>
+
           <Link to={'/campuses/new'}>
              <button>Add Campus</button>
           </Link>
