@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchAllStudentsThunk } from "../../thunks";
+import { fetchAllStudentsThunk,deleteStudentThunk } from "../../thunks";
 import { AllStudentView } from "../views";
 import { Link } from "react-router-dom";
 
@@ -12,9 +12,9 @@ class AllStudentContainer extends Component {
     this.props.fetchAllStudent();
   }
 
-  // handleDelete = (id) => {
-  //   this.props.deleteCampus(id);
-  // };
+  handleDelete = (id) => {
+    this.props.deleteStudent(id);
+  };
 
   render() {
     console.log("ALLSTUDENT RENDER");
@@ -23,7 +23,8 @@ class AllStudentContainer extends Component {
         {/* <Link to={"/students/new"} >
       <button>Add Student</button> </Link> */}
       
-      <AllStudentView allStudent={this.props.allStudent}/>
+      <AllStudentView allStudent={this.props.allStudent}
+                        handleDelete={this.handleDelete}/>
       </div>
         // allCampuses={this.props.allCampuses}
         // hello={this.props.hello}
@@ -49,7 +50,8 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   console.log(" STUDENT MAPDISPATCH ")
   return {
-    fetchAllStudent: () => dispatch(fetchAllStudentsThunk()),
+    fetchAllStudent: () => dispatch( fetchAllStudentsThunk() ),
+    deleteStudent: (id) => dispatch( deleteStudentThunk(id) ),
   };
 };
 

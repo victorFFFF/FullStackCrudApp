@@ -13,7 +13,13 @@ const AllCampusesView = (props) => {
   //  console.log("LOL "+ props.allCampuses[0].students[0].firstName)
 
   return (
-    <div className="all-campuses">
+    <div className="all-campuses" >
+      <h1>ALL CAMPUSES</h1>
+        <Link to={'/campuses/new'}>
+             <button style={{marginBottom: '300px' }}>Add Campus</button>
+          </Link>
+
+      <div style={{border: '2px solid black', padding: "200px"}}>
       {props.allCampuses.map((campus) => (
         <div key={campus.id}>
           <Link to={`/campuses/${campus.id}`}>
@@ -22,15 +28,13 @@ const AllCampusesView = (props) => {
           <img src={campus.imageUrl} width="300px" alt={campus.name} />
           <p>{campus.students.length} students</p>
 
-          <Link to={'/campuses/new'}>
-             <button>Add Campus</button>
-          </Link>
           <Link to={`/campuses/${campus.id}/edit`}>
             <button>Edit</button> 
             </Link>
           <button onClick={() => props.handleDelete(campus.id)}>Delete</button>
         </div>
       ))}
+    </div>
     </div>
   );
 };

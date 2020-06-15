@@ -55,7 +55,7 @@ class AddCampusFormContainer extends Component {
     console.log("CAMPUS NAME STATE " + this.state.name)
     console.log("CAMPUS ADDRESS STATE " + this.state.address)
     console.log("CAMPUS DESCRIPTION STATE " + this.state.description)
-    console.log("CAMPUS URL STATE " + this.state.imageUrl)
+    console.log("CAMPUS URL STATE" + this.state.imageUrl)
     return (
       <>
         {/* Can potentially be extracted into its own ErrorMessage component */}
