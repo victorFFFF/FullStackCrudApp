@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { Redirect } from 'react-router-dom'
 
-const AddStudentFormView = (props) => {
+const EditStudentFormView = (props) => {
   return (
     <div>
       <form onSubmit={props.handleSubmit}>
@@ -11,7 +13,6 @@ const AddStudentFormView = (props) => {
             value={props.firstName}
             name="firstName"
             onChange={props.handleChange}
-            required
           ></input>
         </div>
         <div>
@@ -20,7 +21,6 @@ const AddStudentFormView = (props) => {
             value={props.lastName}
             name="lastName"
             onChange={props.handleChange}
-            required
           ></input>
         </div>
         <div>
@@ -29,54 +29,39 @@ const AddStudentFormView = (props) => {
             value={props.email}
             name="email"
             onChange={props.handleChange}
-            required
           ></input>
         </div>
         <div>
-          GPA:{" "}
-          <input
-            value={props.gpa}
-            name="gpa"
-            onChange={props.handleChange}
-            required        
-          ></input>
-        </div>
-        <div>
-          Photo:{" "}
+          Image Url:{" "}
           <input
             value={props.imageUrl}
             name="imageUrl"
             onChange={props.handleChange}
-            required
-          ></input> 
+          ></input>
         </div>
         <div>
-        Campus ID:{" "}
+          School ID:{" "}
           <input
             value={props.campusId}
             name="campusId"
             onChange={props.handleChange}
-            required
-          ></input> 
+          ></input>
         </div>
-
-        
-
-        
-        <button>Add Student</button>
+    
+        <button>Confirm</button>
       </form>
+     
     </div>
   );
 };
 
-AddStudentFormView.propTypes = {
-  // handleSubmit: PropTypes.func.isRequired,
-  // handleChange: PropTypes.func.isRequired,
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  email:PropTypes.string.isRequired,
-  gpa: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
-};
+// EditStudentFormView.propTypes = {
+//   handleSubmit: PropTypes.func.isRequired,
+//   handleChange: PropTypes.func.isRequired,
+//   name: PropTypes.string.isRequired,
+//   address: PropTypes.string.isRequired,
+//   description: PropTypes.string.isRequired,
+//   imageUrl: PropTypes.string.isRequired,
+// };
 
-export default AddStudentFormView;
+export default EditStudentFormView;

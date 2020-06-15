@@ -28,6 +28,7 @@ router.get("/:id", async (req, res, next) => {
  
 
       // send back the campus as a response
+      console.log(student)
       res.status(200).json([student]);
     } catch (err) {
       // if error:
@@ -59,16 +60,12 @@ router.get("/:id", async (req, res, next) => {
       // send that campus as a json to the client
       res.status(201).send(newStudent);
     } catch (err) {
-      console.log("POST STUDENT ERROR")
       next(err);
     }
   });
 
 
-
-
-
-  // Route to handle removing a student
+  // REMOVE STUDENT ON ID
 router.delete("/:id", async (req, res, next) => {
   const { id } = req.params;
   // get an id for a student to delete
@@ -84,6 +81,48 @@ router.delete("/:id", async (req, res, next) => {
     next(err);
   }
 });
+
+// Route to handle editing a campus
+// /api/students/:id
+// /api/students/456 would modify a campus with id 456
+router.put("/:id", async (req, res, next) => {
+  // get the id from request params
+  const { id } = req.params;
+  // get form data from the request body
+  const { name, address, description, imageUrl } = req.body;
+  const updatedObj = {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    gpa: gpa,
+    imageUrl: imageUrl,
+    theId: theId,
+  };
+  try {
+    // if successfull:
+    // Find a campus with a matching id from the database
+    const student = await Student.findByPk(id);
+    // database would return a valid campus object or an error
+    // console.log(updatedObj);
+    // modify the campus object with new form data
+    await student.set(updatedObj);
+    // save the new campus object to the data
+    // database would return a new campus object
+    const updatedStudent = await student.save();
+    // console.log(updatedCampus);
+    // send the newCampus as a response from the API
+    res.status(201).send(updatedStudent);
+  } catch (err) {
+    // if error:
+    // handle the error
+    next(err);
+  }
+});
+
+
+
+
+
 
 
 module.exports = router;

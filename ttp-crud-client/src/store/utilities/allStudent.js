@@ -5,7 +5,8 @@ import axios from "axios";
 const FETCH_ALL_STUDENTS = "FETCH_ALL_STUDENTS";
 const FETCH_CHOSEN_STUDENT = "FETCH_CHOSEN_STUDENT";
 const ADD_STUDENT = "ADD_STUDENT";
-const DELETE_STUDENT="DELETE_STUDENT";
+const DELETE_STUDENT= "DELETE_STUDENT";
+const EDIT_STUDENT = "EDIT_STUDENT";
 
 
 //ACTION CREATOR
@@ -42,6 +43,14 @@ const deleteStudent =(id)=>
 }
 
 
+const editStudent = (student) => {
+  return {
+    type: EDIT_STUDENT,
+    payload: student,
+  }
+}
+
+
 
 //THUNKS
 
@@ -58,7 +67,7 @@ export const fetchAllStudentsThunk = () => (dispatch) =>{
 
 //GET SELECTED STUDENT BASED ON ID
 export const fetchChosenStudentThunk = (id) =>(dispatch) =>{
-    console.log("CALLING TO GET CHOSEN STUDENT")
+    console.log("INSIDE TO GET CHOSEN STUDENT")
     return axios
             .get(`/api/students/${id}`)
             .then((rest) => rest.data)
@@ -71,7 +80,7 @@ export const fetchChosenStudentThunk = (id) =>(dispatch) =>{
 export const addStudentThunk = (student) => (dispatch) => {
     console.log("INSIDE ADDSTUDENT THUNK " + student.theId)
     return axios
-      .post(`/api/students/${student.theId}`, student)
+      .post(`/api/students/${student.campusId}`, student)
       .then((res) => res.data)
       .then((newStudent) => {
         dispatch(addStudent(newStudent));
@@ -91,6 +100,17 @@ export const addStudentThunk = (student) => (dispatch) => {
   };
   
 
+//EDIT
+  export const editStudentThunk = (id, student) => (dispatch) => {
+      console.log("EDITSTUDENT THUNK")
+    return axios
+      .put(`/api/students/${id}`, student)
+      .then((res) => res.data)
+      .then((updatedStudent) => dispatch(editStudent(updatedStudent)))
+      .catch((err) => console.log(err));
+  };
+  
+
 //REDUCER
 const reducer = (state =[] , action) =>{
     switch(action.type){
@@ -102,6 +122,8 @@ const reducer = (state =[] , action) =>{
             return [...state, action.payload];
         case DELETE_STUDENT:
             return state.filter((student) => student.id != action.payload);
+        case EDIT_STUDENT:
+            return [...state, action.payload];
         default:
             return state;
     }

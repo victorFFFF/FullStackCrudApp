@@ -7,3 +7,4 @@ export { default as NavBarContainer } from "./NavBarContainer";
 export { default as AllStudentContainer} from "./AllStudentContainer";
 export { default as SingleStudentContainer} from "./SingleStudentContainer";
 export { default as AddStudentFormContainer} from "./AddStudentFormContainer";
+export { default as   EditStudentFormContainer} from "./EditStudentFormContainer";

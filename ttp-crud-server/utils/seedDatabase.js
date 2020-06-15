@@ -21,10 +21,13 @@ const seedDatabase = async () => {
       description: "A college in Manhattan",
       imageUrl: "https://images.youracclaim.com/images/ddf15e7e-6c22-423d-be46-232bfe337603/blob.png",
     }),
-    Student.create({ firstName: "Linda", lastName:"wo",email:"Linda@Email.com",gpa : 2.8, campusId: 3 }),
+
     Student.create({ firstName: "Daniel", lastName: "Wong", email:"Daniel@Email.com",gpa : 1.2, campusId:2 }),
     Student.create({ firstName: "Sally", lastName:"Li",email:"Sally@Email.com", gpa : 3.0, campusId: 1 }),
-    Student.create({ firstName: "Victor", lastName:"chen",email:"victor@Email.com",gpa : 2.3, campusId: 1 })
+    Student.create({ firstName: "Linda", lastName:"wo",email:"Linda@Email.com",gpa : 2.8, campusId: 1 }),
+    Student.create({ firstName: "TOM", lastName: "LOL", email:"TOM@Email.com",gpa : 1.2, campusId:1 }),
+    Student.create({ firstName: "VICTOR", lastName: "HACKS", email:"VICTOR@Email.com",gpa : 1.2, campusId:3 })
+
   ]);
 };
 

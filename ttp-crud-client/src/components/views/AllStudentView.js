@@ -34,6 +34,7 @@ console.log("STUDENT VIEW ")
             <br></br>
             <Link to={`/campuses/${x.campus.id}`}>{x.campus.name}</Link>
             {/* <p>{x.campus.name}</p> */}
+            <Link to={`/students/${x.id}/edit`} ><button>Edit</button></Link>
             <button onClick={() => props.handleDelete(x.id)}>Delete</button>
             
             </div>
