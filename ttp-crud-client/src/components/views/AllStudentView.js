@@ -5,7 +5,13 @@ import { Link } from "react-router-dom";
 
 const AllStudentView = (props) => {
   if (!props.allStudent.length) {
-    return <div>There are no students enrolled.</div>;
+    
+    return <div>
+      There are no students enrolled.
+      <br></br>
+      <Link to={`/students/${props.allStudent.id}/new`}>
+      <button>Add Student</button></Link>
+      </div>;
   }
 
 console.log("STUDENT VIEW ")

@@ -6,7 +6,13 @@ import { campus } from "../../reducers";
 
 const AllCampusesView = (props) => {
   if (!props.allCampuses.length) {
-    return <div className="all-campuses">There are no campuses</div>;
+    return <div className="all-campuses">
+      There are no registerd campuses.
+      <br></br>
+      <Link to={'/campuses/new'}>
+             <button style={{marginBottom: '300px' }}>Add Campus</button>
+          </Link>
+      </div>;
   }
 
  
