@@ -2,6 +2,9 @@ var express = require("express");
 var router = express.Router();
 const { Campus, Student } = require("../database/models");
 
+
+
+//GET ALL STUDENTS
 router.get("/", async (req, res, next) =>{
     console.log("STUDENT ROUTER CALLED")
 try{
@@ -14,6 +17,8 @@ try{
     }
 });
 
+
+//GET A STUDENT BASED ON ID
 router.get("/:id", async (req, res, next) => {
     // take the id from params
     const { id } = req.params;
@@ -33,6 +38,31 @@ router.get("/:id", async (req, res, next) => {
   });
 
 
+
+//ADD A STUDENT 
+  router.post("/", async (req, res, next) => {
+    // Take the form data from the request body
+    const { firstName, lastName, email, gpa, imageUrl } = req.body;
+    // Create a campus object
+    const studentObj = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      gpa: gpa,
+      imageUrl: imageUrl,
+      campusId: 1,
+    };
+    try {
+      // Create a new campus on the database
+      const newStudent = await Student.create(studentObj);
+      // The database would return a campus
+      // send that campus as a json to the client
+      res.status(201).send(newStudent);
+    } catch (err) {
+      console.log("SOMETHINGWRONG")
+      next(err);
+    }
+  });
 
 
 module.exports = router;

@@ -22,6 +22,7 @@ console.log("SINGLE STUDENT VIEW ")
              <p>{x.firstName}, {x.lastName}</p>
             <Link to={`/campuses/${x.campus.id}`}>{x.campus.name}</Link>
             <p>GPA {x.gpa} </p>
+            <p>{x.email}</p>
             
             </div>
         </div>

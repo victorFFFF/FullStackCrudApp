@@ -40,6 +40,7 @@ class EditCampusFormContainer extends Component {
         address={this.state.address}
         description={this.state.description}
         imageUrl={this.state.imageUrl}
+        id = { this.props.campus}
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
       />

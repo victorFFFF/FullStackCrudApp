@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { Redirect } from 'react-router-dom'
 
 const EditCampusFormView = (props) => {
   return (
@@ -37,8 +39,9 @@ const EditCampusFormView = (props) => {
             onChange={props.handleChange}
           ></input>
         </div>
-        <button>Edit Campus</button>
+        <button>Confirm</button>
       </form>
+     
     </div>
   );
 };

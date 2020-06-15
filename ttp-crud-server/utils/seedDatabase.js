@@ -23,7 +23,7 @@ const seedDatabase = async () => {
     }),
     Student.create({ firstName: "Daniel", lastName: "Wong", email:"thEmail",gpa : 1.2, campusId:2 }),
     Student.create({ firstName: "Sally", lastName:"Li",email:"theEmail", gpa : 3.0, campusId: 1 }),
-    Student.create({ firstName: "Victor", lastName:"chen",email:"theEmail",gpa : 2.3, campusId: 1 }),
+    Student.create({ firstName: "Victor", lastName:"chen",email:"theEmail",gpa : 2.3, campusId: 1 })
   ]);
 };
 

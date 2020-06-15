@@ -23,11 +23,14 @@ const CampusView = (props) => {
 
   return (
     <div style={{border: '2px solid black' }}>
+      
       <img src={props.campus.imageUrl} alt={props.campus.name} />
       <h1>{props.campus.name}</h1>
       <h3>{props.campus.address}</h3>
       <p>{props.campus.description}</p>
       {studentDisplay}
+          <Link to={'/students/new'}>
+      <button>Add Student</button></Link>
       <Link to={`/campuses/${props.campus.id}/edit`}>
             <button>Edit</button> </Link>
       <Link to={'/campuses'}>      

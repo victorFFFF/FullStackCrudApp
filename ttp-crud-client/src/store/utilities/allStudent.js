@@ -4,6 +4,7 @@ import axios from "axios";
 //ACTION TYPE
 const FETCH_ALL_STUDENTS = "FETCH_ALL_STUDENTS";
 const FETCH_CHOSEN_STUDENT = "FETCH_CHOSEN_STUDENT";
+const ADD_STUDENT = "ADD_STUDENT";
 
 
 //ACTION CREATOR
@@ -23,6 +24,14 @@ const fetchChosenStudent = (id) =>
     }
 } 
 
+const addStudent = (student) =>
+{
+    return{
+        type: ADD_STUDENT,
+        payload: student,
+    }
+}
+
 
 
 //THUNKS
@@ -36,7 +45,7 @@ export const fetchAllStudentsThunk = () => (dispatch) =>{
             .then((rest) => rest.data)
             .then((students) => dispatch(fetchAllStudents(students)))
             .catch((err) => console.log(err));
-}
+};
 
 //GET SELECTED STUDENT BASED ON ID
 export const fetchChosenStudentThunk = (id) =>(dispatch) =>{
@@ -46,17 +55,29 @@ export const fetchChosenStudentThunk = (id) =>(dispatch) =>{
             .then((rest) => rest.data)
             .then((students) => dispatch(fetchChosenStudent(students)))
             .catch((err) => console.log(err));
-}
+};
 
 
+//ADD STUDENT
+export const addStudentThunk = (student, ownProps) => (dispatch) => {
+    console.log("INSIDE ADDSTUDENT THUNK")
+    return axios
+      .post("/api/students", student)
+      .then((res) => res.data)
+      .then((newStudent) => {
+        dispatch(addStudent(newStudent));
+        ownProps.history.push(`/students/${newStudent.id}`);
+      })
+      .catch((err) => console.log("FAILED ADD STUDENT"));
+  };
 
-// export const addStudentThunk = (student, ownProps) => (dispatch) => {
+// export const addCampusThunk = (campus, ownProps) => (dispatch) => {
 //     return axios
-//       .post("/api/students", student)
+//       .post("/api/campuses", campus)
 //       .then((res) => res.data)
-//       .then((student) => {
-//         dispatch(addCampus(student));
-//         ownProps.history.push(`/students`);
+//       .then((newCampus) => {
+//         dispatch(addCampus(newCampus));
+//         ownProps.history.push(`/campuses/${newCampus.id}`);
 //       })
 //       .catch((err) => console.log(err));
 //   };
@@ -72,6 +93,8 @@ const reducer = (state =[] , action) =>{
             return action.payload;
         case FETCH_CHOSEN_STUDENT:
             return action.payload;
+        case ADD_STUDENT:
+            return [...state, action.payload];
         default:
             return state;
     }

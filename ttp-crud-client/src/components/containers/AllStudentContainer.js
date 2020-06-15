@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchAllStudentsThunk } from "../../thunks";
 import { AllStudentView } from "../views";
+import { Link } from "react-router-dom";
 
 // Smart container;
 class AllStudentContainer extends Component {
@@ -18,9 +19,12 @@ class AllStudentContainer extends Component {
   render() {
     console.log("ALLSTUDENT RENDER");
     return (
+      <div>  
+        {/* <Link to={"/students/new"} >
+      <button>Add Student</button> </Link> */}
       
       <AllStudentView allStudent={this.props.allStudent}/>
-     
+      </div>
         // allCampuses={this.props.allCampuses}
         // hello={this.props.hello}
         // handleDelete={this.handleDelete}
@@ -37,6 +41,9 @@ const mapState = (state) => {
     allStudent: state.allStudent,
   };
 };
+
+
+
 
 // Map dispatch to props;
 const mapDispatch = (dispatch) => {
