@@ -10,7 +10,7 @@ class CampusContainer extends Component {
   // }
 
   componentDidMount() {
-    console.log("single campus mount")
+
     this.props.fetchCampus(this.props.match.params.id);
   }
 

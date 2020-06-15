@@ -18,12 +18,11 @@ class EditStudentFormContainer extends Component {
   }
 
   componentDidMount() {
-    console.log("Before" + this.state.firstName)
+   
     this.props.fetchStudent(this.props.match.params.id).then(({ payload }) => {
-      console.log("PAYLOAD "  + payload[0].firstName)
       this.setState(payload[0]);
     });
-    console.log("AFTER" + this.state.firstName)
+ 
 
   }
 

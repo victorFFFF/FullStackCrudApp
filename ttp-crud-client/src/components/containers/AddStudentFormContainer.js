@@ -56,11 +56,7 @@ class AddStudentFormContainer extends Component {
   };
 
   render() {
-    console.log("THE firstName - " + this.state.firstName)
-    console.log("THE lastName - " + this.state.lastName)
-    console.log("THE gpa - " + this.state.gpa)
-    console.log("THE email - " + this.state.email)
-    console.log("THE url - " + this.state.imageUrl)
+
     return (
       <>
         {/* Can potentially be extracted into its own ErrorMessage component */}

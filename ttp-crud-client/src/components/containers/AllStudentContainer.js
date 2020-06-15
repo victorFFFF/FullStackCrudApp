@@ -26,10 +26,7 @@ class AllStudentContainer extends Component {
       <AllStudentView allStudent={this.props.allStudent}
                         handleDelete={this.handleDelete}/>
       </div>
-        // allCampuses={this.props.allCampuses}
-        // hello={this.props.hello}
-        // handleDelete={this.handleDelete}
-    //   />
+
     );
   }
 }

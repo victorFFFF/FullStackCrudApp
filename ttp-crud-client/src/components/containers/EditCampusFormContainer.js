@@ -16,12 +16,11 @@ class EditCampusFormContainer extends Component {
   }
 
   componentDidMount() {
-    console.log("Before " + this.state.name)
     this.props.fetchCampus(this.props.match.params.id).then(({ payload }) => {
-      console.log("PAYLOAD "  + payload.name)
+    
       this.setState(payload);
     });
-    console.log("After " + this.state.name)
+ 
   }
 
   handleChange = (e) => {
