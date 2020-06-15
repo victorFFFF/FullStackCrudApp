@@ -28,7 +28,7 @@ router.get("/:id", async (req, res, next) => {
  
 
       // send back the campus as a response
-      console.log(student)
+      // console.log(student)
       res.status(200).json([student]);
     } catch (err) {
       // if error:
@@ -82,14 +82,15 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
-// Route to handle editing a campus
+// Route to handle editing a student
 // /api/students/:id
 // /api/students/456 would modify a campus with id 456
 router.put("/:id", async (req, res, next) => {
+  console.log("IN PUT")
   // get the id from request params
   const { id } = req.params;
   // get form data from the request body
-  const { name, address, description, imageUrl } = req.body;
+  const { firstName, lastName, email, gpa, imageUrl,theId } = req.body;
   const updatedObj = {
     firstName: firstName,
     lastName: lastName,

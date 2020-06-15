@@ -102,7 +102,8 @@ export const addStudentThunk = (student) => (dispatch) => {
 
 //EDIT
   export const editStudentThunk = (id, student) => (dispatch) => {
-      console.log("EDITSTUDENT THUNK")
+      console.log("EDITSTUDENT THUNK " + student.firstName )
+      console.log("ID" + id)
     return axios
       .put(`/api/students/${id}`, student)
       .then((res) => res.data)
