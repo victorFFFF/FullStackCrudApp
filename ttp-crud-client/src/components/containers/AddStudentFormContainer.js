@@ -13,6 +13,7 @@ class AddStudentFormContainer extends Component {
       email: "",
       gpa: "",
       imageUrl: "",
+      theId:"",
       isValidName: false,
       errors: {},
     };
@@ -71,6 +72,7 @@ class AddStudentFormContainer extends Component {
          email={this.state.email}
          gpa={this.state.gpa}
          imageUrl={this.state.imageUrl}
+         theId={this.state.theId}
          handleSubmit={this.handleSubmit}
          handleChange={this.handleChange}/>
 
@@ -89,10 +91,10 @@ class AddStudentFormContainer extends Component {
 }
 
 
-const mapDispatch = (dispatch, ownProps) => {
+const mapDispatch = (dispatch) => {
   console.log("AddStudentContainer DISPATCHING")
   return {
-    addStudent: (student) => dispatch(addStudentThunk(student, ownProps)),
+    addStudent: (student) => dispatch(addStudentThunk(student)),
   };
 };
 

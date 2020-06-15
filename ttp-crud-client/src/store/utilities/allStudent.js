@@ -59,14 +59,14 @@ export const fetchChosenStudentThunk = (id) =>(dispatch) =>{
 
 
 //ADD STUDENT
-export const addStudentThunk = (student, ownProps) => (dispatch) => {
-    console.log("INSIDE ADDSTUDENT THUNK")
+export const addStudentThunk = (student) => (dispatch) => {
+    console.log("INSIDE ADDSTUDENT THUNK " + student.theId)
     return axios
-      .post("/api/students", student)
+      .post(`/api/students/${student.theId}`, student)
       .then((res) => res.data)
       .then((newStudent) => {
         dispatch(addStudent(newStudent));
-        ownProps.history.push(`/students/${newStudent.id}`);
+        
       })
       .catch((err) => console.log("FAILED ADD STUDENT"));
   };

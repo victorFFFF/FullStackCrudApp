@@ -38,7 +38,7 @@ const AddStudentFormView = (props) => {
             value={props.gpa}
             name="gpa"
             onChange={props.handleChange}
-           
+                  
           ></input>
         </div>
         <div>
@@ -48,8 +48,21 @@ const AddStudentFormView = (props) => {
             name="imageUrl"
             onChange={props.handleChange}
             
-          ></input>
+          ></input> 
         </div>
+        <div>
+        School ID:{" "}
+          <input
+            value={props.theId}
+            name="theId"
+            onChange={props.handleChange}
+            
+          ></input> 
+        </div>
+
+        
+
+        
         <button>Add Student</button>
       </form>
     </div>

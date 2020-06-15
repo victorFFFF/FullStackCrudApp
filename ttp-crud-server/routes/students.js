@@ -6,7 +6,6 @@ const { Campus, Student } = require("../database/models");
 
 //GET ALL STUDENTS
 router.get("/", async (req, res, next) =>{
-    console.log("STUDENT ROUTER CALLED")
 try{
     const student  = await Student.findAll({include:Campus});
 
@@ -40,8 +39,9 @@ router.get("/:id", async (req, res, next) => {
 
 
 //ADD A STUDENT 
-  router.post("/", async (req, res, next) => {
+  router.post("/:id", async (req, res, next) => {
     // Take the form data from the request body
+    const { id } = req.params;
     const { firstName, lastName, email, gpa, imageUrl } = req.body;
     // Create a campus object
     const studentObj = {
@@ -50,7 +50,7 @@ router.get("/:id", async (req, res, next) => {
       email: email,
       gpa: gpa,
       imageUrl: imageUrl,
-      campusId: 1,
+      campusId: id,
     };
     try {
       // Create a new campus on the database
@@ -59,7 +59,7 @@ router.get("/:id", async (req, res, next) => {
       // send that campus as a json to the client
       res.status(201).send(newStudent);
     } catch (err) {
-      console.log("SOMETHINGWRONG")
+      console.log("POST STUDENT ERROR")
       next(err);
     }
   });
