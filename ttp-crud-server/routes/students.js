@@ -90,14 +90,14 @@ router.put("/:id", async (req, res, next) => {
   // get the id from request params
   const { id } = req.params;
   // get form data from the request body
-  const { firstName, lastName, email, gpa, imageUrl,theId } = req.body;
+  const { firstName, lastName, email, gpa, imageUrl,campusId } = req.body;
   const updatedObj = {
     firstName: firstName,
     lastName: lastName,
     email: email,
     gpa: gpa,
     imageUrl: imageUrl,
-    theId: theId,
+    campusId: campusId,
   };
   try {
     // if successfull:
